@@ -1,13 +1,10 @@
 import { useState, useEffect } from 'react';
 import { ChakraProvider, Box, Container, Heading, Button, Flex } from '@chakra-ui/react';
 import { extendTheme } from '@chakra-ui/react';
-// import Papa from 'papaparse';  // 더 이상 필요없음
 import FilterSection from './components/FilterSection';
 import CharacterGrid from './components/CharacterGrid';
-// import charactersData from './data/characters.csv';  // 이 줄 삭제
-import { charactersData } from './data/characters.js';  // 새로운 import
+import { charactersData } from './data/characters.js';
 
-// 특성 이름 번역
 const characteristicsTranslation = {
   'Big-Eyed': '큰 눈',
   'Canines': '개과',
@@ -22,7 +19,6 @@ const characteristicsTranslation = {
   'Plant-Eating': '초식'
 };
 
-// 캐릭터 이름 번역
 const nameTranslation = {
   'Bacon': '베이컨',
   'Barbie': '바비',
@@ -79,7 +75,6 @@ const nameTranslation = {
   'Yurusa': '유루사'
 };
 
-// Create a custom theme
 const theme = extendTheme({
   fonts: {
     heading: `'Fredoka', sans-serif`,
@@ -108,7 +103,6 @@ const theme = extendTheme({
   }
 });
 
-// 이미지 경로를 위한 상수 추가
 const PUBLIC_URL = process.env.PUBLIC_URL;
 
 function App() {
@@ -117,7 +111,6 @@ function App() {
   const [isKorean, setIsKorean] = useState(false);
 
   useEffect(() => {
-    // CSV 파싱 대신 직접 데이터 설정
     setCharacters(charactersData);
   }, []);
 

@@ -1,6 +1,6 @@
 import { SimpleGrid, Box, Text, Image, Flex } from '@chakra-ui/react';
 
-const CharacterCard = ({ character, isKorean, translations, nameTranslations }) => {
+const CharacterCard = ({ character, isKorean, translations, nameTranslations, imageBasePath }) => {
   const characterName = character['Character Name'];
   
   return (
@@ -18,7 +18,7 @@ const CharacterCard = ({ character, isKorean, translations, nameTranslations }) 
           </Text>
         </Box>
         <Image 
-          src={`/images/${characterName}.webp`} 
+          src={`${imageBasePath}${characterName}.webp`}
           alt={characterName}
           boxSize="80px"
           objectFit="cover"
@@ -33,18 +33,12 @@ const CharacterGrid = ({ characters, isKorean, nameTranslations, imageBasePath }
   return (
     <SimpleGrid columns={[2, 3, 4, 5]} spacing={4}>
       {characters.map(character => (
-        <Box key={character.name}>
-          <Image 
-            src={`${imageBasePath}${character.name}.webp`}
-            alt={character.name}
-            boxSize="80px"
-            objectFit="cover"
-            borderRadius="md"
-          />
+        <Box key={character['Character Name']}>
           <CharacterCard 
             character={character} 
             isKorean={isKorean}
             nameTranslations={nameTranslations}
+            imageBasePath={imageBasePath}
           />
         </Box>
       ))}

@@ -18,7 +18,7 @@ const CharacterCard = ({ character, isKorean, translations, nameTranslations, im
           </Text>
         </Box>
         <Image 
-          src={`${imageBasePath}${characterName}.webp`}
+          src={`${process.env.PUBLIC_URL}/images/${characterName}.webp`}
           alt={characterName}
           boxSize="80px"
           objectFit="cover"

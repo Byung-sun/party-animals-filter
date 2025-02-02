@@ -29,7 +29,7 @@ const CharacterCard = ({ character, isKorean, translations, nameTranslations, im
   );
 };
 
-const CharacterGrid = ({ characters, isKorean, nameTranslations, imageBasePath }) => {
+const CharacterGrid = ({ characters, isKorean, translations, nameTranslations, imageBasePath }) => {
   return (
     <SimpleGrid columns={[2, 3, 4, 5]} spacing={4}>
       {characters.map(character => (
@@ -37,6 +37,7 @@ const CharacterGrid = ({ characters, isKorean, nameTranslations, imageBasePath }
           <CharacterCard 
             character={character} 
             isKorean={isKorean}
+            translations={translations}
             nameTranslations={nameTranslations}
             imageBasePath={imageBasePath}
           />

@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import { ChakraProvider, Box, Container, Heading, Button, Flex } from '@chakra-ui/react';
 import { extendTheme } from '@chakra-ui/react';
-import Papa from 'papaparse';
+// import Papa from 'papaparse';  // 더 이상 필요없음
 import FilterSection from './components/FilterSection';
 import CharacterGrid from './components/CharacterGrid';
-import charactersData from './data/characters.csv';
+// import charactersData from './data/characters.csv';  // 이 줄 삭제
+import { charactersData } from './data/characters.js';  // 새로운 import
 
 // 특성 이름 번역
 const characteristicsTranslation = {
@@ -116,14 +117,8 @@ function App() {
   const [isKorean, setIsKorean] = useState(false);
 
   useEffect(() => {
-    // Load and parse CSV file
-    Papa.parse(charactersData, {
-      download: true,
-      header: true,
-      complete: (results) => {
-        setCharacters(results.data);
-      }
-    });
+    // CSV 파싱 대신 직접 데이터 설정
+    setCharacters(charactersData);
   }, []);
 
   const filteredCharacters = characters.filter(character => {

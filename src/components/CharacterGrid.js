@@ -3,6 +3,25 @@ import { SimpleGrid, Box, Text, Image, Flex } from '@chakra-ui/react';
 const CharacterCard = ({ character, isKorean, translations, nameTranslations, imageBasePath }) => {
   const characterName = character['Character Name'];
   
+  const getImageUrl = (name) => {
+    const webpUrl = `${process.env.PUBLIC_URL}/images/${name}.webp`;
+    const pngUrl = `${process.env.PUBLIC_URL}/images/${name}.png`;
+    
+    return (
+      <Image 
+        src={webpUrl}
+        onError={(e) => {
+          e.target.onerror = null;
+          e.target.src = pngUrl;
+        }}
+        alt={characterName}
+        boxSize="80px"
+        objectFit="cover"
+        borderRadius="md"
+      />
+    );
+  };
+  
   return (
     <Box p={4} borderWidth="1px" borderRadius="lg" bg="orange.500" borderColor="orange.400">
       <Flex gap={4}>
@@ -17,13 +36,7 @@ const CharacterCard = ({ character, isKorean, translations, nameTranslations, im
               .join(', ')}
           </Text>
         </Box>
-        <Image 
-          src={`${process.env.PUBLIC_URL}/images/${characterName}.webp`}
-          alt={characterName}
-          boxSize="80px"
-          objectFit="cover"
-          borderRadius="md"
-        />
+        {getImageUrl(characterName)}
       </Flex>
     </Box>
   );

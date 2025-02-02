@@ -1,0 +1,11 @@
+{
+  "files": {
+    "main.js": "/party-animals-filter/static/js/main.79b8221d.js",
+    "static/media/characters.csv": "/party-animals-filter/static/media/characters.5e5715cd931a8014e9d3.csv",
+    "index.html": "/party-animals-filter/index.html",
+    "main.79b8221d.js.map": "/party-animals-filter/static/js/main.79b8221d.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.79b8221d.js"
+  ]
+}

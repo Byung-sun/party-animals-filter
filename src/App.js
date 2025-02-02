@@ -107,6 +107,9 @@ const theme = extendTheme({
   }
 });
 
+// 이미지 경로를 위한 상수 추가
+const PUBLIC_URL = process.env.PUBLIC_URL;
+
 function App() {
   const [characters, setCharacters] = useState([]);
   const [filters, setFilters] = useState({});
@@ -165,6 +168,7 @@ function App() {
             isKorean={isKorean}
             translations={characteristicsTranslation}
             nameTranslations={nameTranslation}
+            imageBasePath={`${PUBLIC_URL}/images/`}
           />
         </Container>
       </Box>

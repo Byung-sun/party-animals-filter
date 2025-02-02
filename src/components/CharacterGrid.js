@@ -29,17 +29,24 @@ const CharacterCard = ({ character, isKorean, translations, nameTranslations }) 
   );
 };
 
-const CharacterGrid = ({ characters, isKorean, translations, nameTranslations }) => {
+const CharacterGrid = ({ characters, isKorean, nameTranslations, imageBasePath }) => {
   return (
-    <SimpleGrid columns={[1, 2, 3, 4]} spacing={4}>
+    <SimpleGrid columns={[2, 3, 4, 5]} spacing={4}>
       {characters.map(character => (
-        <CharacterCard 
-          key={character['Character Name']} 
-          character={character} 
-          isKorean={isKorean}
-          translations={translations}
-          nameTranslations={nameTranslations}
-        />
+        <Box key={character.name}>
+          <Image 
+            src={`${imageBasePath}${character.name}.webp`}
+            alt={character.name}
+            boxSize="80px"
+            objectFit="cover"
+            borderRadius="md"
+          />
+          <CharacterCard 
+            character={character} 
+            isKorean={isKorean}
+            nameTranslations={nameTranslations}
+          />
+        </Box>
       ))}
     </SimpleGrid>
   );

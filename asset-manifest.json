@@ -1,11 +1,10 @@
 {
   "files": {
-    "main.js": "/party-animals-filter/static/js/main.322a6cc5.js",
-    "static/media/characters.csv": "/party-animals-filter/static/media/characters.5e5715cd931a8014e9d3.csv",
+    "main.js": "/party-animals-filter/static/js/main.b9f83ca3.js",
     "index.html": "/party-animals-filter/index.html",
-    "main.322a6cc5.js.map": "/party-animals-filter/static/js/main.322a6cc5.js.map"
+    "main.b9f83ca3.js.map": "/party-animals-filter/static/js/main.b9f83ca3.js.map"
   },
   "entrypoints": [
-    "static/js/main.322a6cc5.js"
+    "static/js/main.b9f83ca3.js"
   ]
 }

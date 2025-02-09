@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useCallback, useMemo, useEffect } from 'react';
 import { ChakraProvider, Box, Container, Heading, Button, Flex } from '@chakra-ui/react';
 import { extendTheme } from '@chakra-ui/react';
 import FilterSection from './components/FilterSection';
 import CharacterGrid from './components/CharacterGrid';
 import { charactersData } from './data/characters.js';
 
-const characteristicsTranslation = {
+const characteristicsTranslation = useMemo(() => ({
   'Big-Eyed': '큰 눈',
   'Canines': '개과',
   'Diving': '다이빙',
@@ -17,9 +17,9 @@ const characteristicsTranslation = {
   'Long Tailed': '긴 꼬리',
   'Meat-Eating': '육식',
   'Plant-Eating': '초식'
-};
+});
 
-const nameTranslation = {
+const nameTranslation = useMemo(() => ({
   'Bacon': '베이컨',
   'Barbie': '바비',
   'Bob': '밥',
@@ -73,7 +73,7 @@ const nameTranslation = {
   'Uni': '유니',
   'Valiente': '발리엔테',
   'Yurusa': '유루사'
-};
+}), []);
 
 const theme = extendTheme({
   fonts: {
@@ -101,36 +101,33 @@ const theme = extendTheme({
       }
     }
   }
-});
-
-const PUBLIC_URL = process.env.PUBLIC_URL;
+}), []);
 
 function App() {
-  const [characters, setCharacters] = useState([]);
   const [filters, setFilters] = useState({});
   const [isKorean, setIsKorean] = useState(false);
 
-  useEffect(() => {
-    setCharacters(charactersData);
+  const toggleLanguage = useCallback(() => {
+    setIsKorean(prev => !prev);
   }, []);
 
-  const filteredCharacters = characters.filter(character => {
+  const filteredCharacters = useMemo(() => charactersData.filter(character => {
     return Object.entries(filters).every(([key, value]) => {
       if (!value) return true;
       return character[key] === 'TRUE';
     });
-  });
+  }), [filters]);
 
   return (
     <ChakraProvider theme={theme}>
-      <Box bg="orange.700" minH="100vh" py={8}>
+      <Box bg={theme.styles.global.body.bg} minH="100vh" py={8}>
         <Container maxW="container.xl">
           <Flex justify="space-between" align="center" mb={8}>
             <Heading textAlign="center" color="white">
               {isKorean ? '파티 애니멀즈 캐릭터 필터' : 'Party Animals Characters Filter'}
             </Heading>
             <Button
-              onClick={() => setIsKorean(!isKorean)}
+              onClick={toggleLanguage}
               colorScheme="orange"
               bg="white"
               color="orange.700"
@@ -156,7 +153,7 @@ function App() {
             isKorean={isKorean}
             translations={characteristicsTranslation}
             nameTranslations={nameTranslation}
-            imageBasePath={`${PUBLIC_URL}/images/`}
+            imageBasePath={`${process.env.PUBLIC_URL}/images/`}
           />
         </Container>
       </Box>

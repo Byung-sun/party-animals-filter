@@ -5,7 +5,7 @@ import FilterSection from './components/FilterSection';
 import CharacterGrid from './components/CharacterGrid';
 import { charactersData } from './data/characters.js';
 
-const characteristicsTranslation = useMemo(() => ({
+const characteristicsTranslation = {
   'Big-Eyed': '큰 눈',
   'Canines': '개과',
   'Diving': '다이빙',
@@ -19,7 +19,7 @@ const characteristicsTranslation = useMemo(() => ({
   'Plant-Eating': '초식'
 });
 
-const nameTranslation = useMemo(() => ({
+const nameTranslation = {
   'Bacon': '베이컨',
   'Barbie': '바비',
   'Bob': '밥',
@@ -73,7 +73,7 @@ const nameTranslation = useMemo(() => ({
   'Uni': '유니',
   'Valiente': '발리엔테',
   'Yurusa': '유루사'
-}), []);
+};
 
 const theme = extendTheme({
   fonts: {
@@ -101,7 +101,7 @@ const theme = extendTheme({
       }
     }
   }
-}), []);
+};
 
 function App() {
   const [filters, setFilters] = useState({});

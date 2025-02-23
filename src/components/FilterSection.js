@@ -16,15 +16,15 @@ const FilterSection = ({ filters, setFilters, isKorean, translations }) => {
   };
 
   const getButtonColor = (value) => {
-    if (value === undefined) return 'gray.200';
+    if (value === undefined) return 'white';
     if (value === true) return 'green.400';
     return 'red.400';
   };
 
   const getButtonText = (value) => {
-    if (value === undefined) return '○';
+    if (value === undefined) return '';
     if (value === true) return '✓';
-    return '✕';
+    return '−';
   };
 
   return (
@@ -45,6 +45,8 @@ const FilterSection = ({ filters, setFilters, isKorean, translations }) => {
               w="30px"
               h="30px"
               p={0}
+              border="1px solid"
+              borderColor="gray.200"
             >
               {getButtonText(filters[characteristic])}
             </Button>

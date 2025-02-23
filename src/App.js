@@ -101,7 +101,7 @@ const theme = extendTheme({
       }
     }
   }
-};
+});
 
 function App() {
   const [filters, setFilters] = useState({});

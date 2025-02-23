@@ -493,7 +493,7 @@ export const charactersData = [
     "Character Name": "Otta",
     "Big-Eyed": "FALSE",
     "Canines": "FALSE",
-    "Diving": "FALSE",
+    "Diving": "TRUE",
     "Egg-Laying": "FALSE",
     "Felines": "FALSE",
     "Fluffy": "TRUE",

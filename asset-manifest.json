@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/party-animals-filter/static/js/main.60a193dd.js",
+    "main.js": "/party-animals-filter/static/js/main.1de1c651.js",
     "index.html": "/party-animals-filter/index.html",
-    "main.60a193dd.js.map": "/party-animals-filter/static/js/main.60a193dd.js.map"
+    "main.1de1c651.js.map": "/party-animals-filter/static/js/main.1de1c651.js.map"
   },
   "entrypoints": [
-    "static/js/main.60a193dd.js"
+    "static/js/main.1de1c651.js"
   ]
 }

@@ -17,7 +17,7 @@ const characteristicsTranslation = {
   'Long Tailed': '긴 꼬리',
   'Meat-Eating': '육식',
   'Plant-Eating': '초식'
-});
+};
 
 const nameTranslation = {
   'Bacon': '베이컨',
@@ -113,8 +113,9 @@ function App() {
 
   const filteredCharacters = useMemo(() => charactersData.filter(character => {
     return Object.entries(filters).every(([key, value]) => {
-      if (!value) return true;
-      return character[key] === 'TRUE';
+      if (value === undefined) return true;
+      if (value === true) return character[key] === 'TRUE';
+      return character[key] === 'FALSE';
     });
   }), [filters]);
 

@@ -1,4 +1,4 @@
-import { SimpleGrid, Checkbox, Box } from '@chakra-ui/react';
+import { SimpleGrid, Box, Button, Text, Flex } from '@chakra-ui/react';
 
 const FilterSection = ({ filters, setFilters, isKorean, translations }) => {
   const characteristics = [
@@ -9,25 +9,49 @@ const FilterSection = ({ filters, setFilters, isKorean, translations }) => {
   const handleFilterChange = (characteristic) => {
     setFilters(prev => ({
       ...prev,
-      [characteristic]: !prev[characteristic]
+      [characteristic]: prev[characteristic] === undefined ? true : 
+                       prev[characteristic] === true ? false : 
+                       undefined
     }));
+  };
+
+  const getButtonColor = (value) => {
+    if (value === undefined) return 'gray.200';
+    if (value === true) return 'green.400';
+    return 'red.400';
+  };
+
+  const getButtonText = (value) => {
+    if (value === undefined) return '○';
+    if (value === true) return '✓';
+    return '✕';
   };
 
   return (
     <Box p={4} borderWidth="1px" borderRadius="lg">
-      <SimpleGrid columns={[3, 4, 6]} spacing={2}>
+      <SimpleGrid columns={[3, 4, 6]} spacing={4}>
         {characteristics.map(characteristic => (
-          <Checkbox
+          <Flex 
             key={characteristic}
-            isChecked={filters[characteristic]}
-            onChange={() => handleFilterChange(characteristic)}
-            color="white"
-            colorScheme="orange"
-            size="sm"
-            spacing={1}
+            align="center"
+            gap={2}
           >
-            {isKorean ? translations[characteristic] : characteristic}
-          </Checkbox>
+            <Button
+              size="sm"
+              onClick={() => handleFilterChange(characteristic)}
+              bg={getButtonColor(filters[characteristic])}
+              color={filters[characteristic] === undefined ? 'black' : 'white'}
+              _hover={{ opacity: 0.8 }}
+              w="30px"
+              h="30px"
+              p={0}
+            >
+              {getButtonText(filters[characteristic])}
+            </Button>
+            <Text fontSize="sm" color="white">
+              {isKorean ? translations[characteristic] : characteristic}
+            </Text>
+          </Flex>
         ))}
       </SimpleGrid>
     </Box>
